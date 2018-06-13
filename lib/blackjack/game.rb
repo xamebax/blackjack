@@ -29,7 +29,7 @@ module Blackjack
       return generate_deck if path.nil?
       raise "the card file doesn't exist" unless File.file?(path)
       deck = File.read(path).split(', ')
-      deck.last.strip!
+      deck.last.strip! # to remove the newline from the last element
       deck
     end
 
@@ -58,7 +58,8 @@ module Blackjack
       deck.shift
     end
 
-    # first_round takes an Array object. We don't care about its return value.
+    # first_round takes two Blackjack::Player objects and an Array object.
+    # We don't care about its return value.
     def first_round(sam, dealer, deck)
       player_plays(sam, deck)
       player_plays(dealer, deck)
@@ -66,7 +67,8 @@ module Blackjack
       player_plays(dealer, deck)
     end
 
-    # early_winner determines a winner after the first round of cards.
+    # early_winner takes two Blackjack::Player objects and determines a winner
+    # after the first round of the game.
     def early_winner(sam, dealer)
       case sam.score
       when 21 # Sam wins regardless if the dealer has 21.
@@ -80,8 +82,8 @@ module Blackjack
       end
     end
 
-    # play takes a deck of cards (an Array object) and returns a string with
-    # the name of the winner.
+    # play takes two Blackjack::Player objects and a deck of cards (an Array
+    # object), and returns a string with the name of the winner.
     def play(sam, dealer, deck)
       first_round(sam, dealer, deck)
       return early_winner(sam, dealer) unless early_winner(sam, dealer).nil?
@@ -100,7 +102,7 @@ module Blackjack
       determine_winner(sam, dealer)
     end
 
-    # determine_winner takes two Blackjack::Player objects and returns a string
+    # determine_winner takes two Blackjack::Player objects and returns a string.
     def determine_winner(sam, dealer)
       # I assumed that the dealer wins on a tie
       if 21 - sam.score >= 21 - dealer.score
@@ -110,8 +112,8 @@ module Blackjack
       end
     end
 
-    # TODO: play should be called separately and its returned value stored
-    # in a variable that's later referenced here
+    # print_outcome takes two Blackjack::Player objects and an Array object,
+    # and prints the whole game.
     def print_outcome(sam, dealer, deck)
       puts play(sam, dealer, deck).to_s
       puts "sam: #{sam.cards.join(', ')}"

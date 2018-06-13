@@ -4,19 +4,21 @@ This is an implementation of a Blackjack game for recruitment purposes, with rul
 
 ## Requirements
 
-Tested and developed with Ruby 2.5.1. Apart from Ruby, you should have at least Bundler installed:
+Tested and developed with Ruby 2.5.1.
+
+You don't need any gems to run the code, but if you want to run the tests, you should have Bundler installed:
 
 ```bash
 $ gem install bundler
 ```
 
-Assuming you have Ruby and Bundler installed, in the directory of the project, run:
+And then, in the directory of the project, run:
 
 ```bash
 $ bundle install
 ```
 
-to install all dependent gems.
+to install all gems required for tests.
 
 ## Usage
 
