@@ -3,14 +3,14 @@
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
 
+Metrics/MethodLength:
+  Max: 15
+
 Metrics/AbcSize:
   Max: 27
 
 Metrics/CyclomaticComplexity:
   Max: 8
-
-Metrics/MethodLength:
-  Max: 30
 
 Metrics/PerceivedComplexity:
   Max: 8

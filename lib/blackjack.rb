@@ -3,5 +3,7 @@ require './lib/blackjack/player'
 
 # The actual game is played here.
 game = Blackjack::Game.new
-deck = game.load_deck(ARGV[0])
-game.print_outcome(deck)
+@sam = Blackjack::Player.new('sam')
+@dealer = Blackjack::Player.new('dealer')
+@deck = game.load_deck(ARGV[0])
+game.print_outcome(@sam, @dealer, @deck)

@@ -49,38 +49,57 @@ RSpec.describe Blackjack::Game do
       expect(game.draw_card(deck)).to eq('DQ')
       expect(deck).to eq(%w[S3 SA C3])
     end
+    it "throws an error if there aren't enough cards" do
+      deck = %w[H5 H9 SA C5 S4 S5]
+      game = Blackjack::Game.new
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect { game.play(sam, dealer, deck) }.to raise_error(RuntimeError)
+    end
   end
 
   describe '#play' do
     it "lets dealer win if it's d21:s19 in the first round" do
       deck = %w[CA DA S8 DK C7 S3]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('dealer')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('dealer')
     end
     it "lets dealer win if it's d22:s22 in the first round" do
       deck = %w[DA HA CA SA]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('dealer')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('dealer')
     end
     it "lets dealer win if it's d20:s19" do
       deck = %w[H9 H5 C5 SA S4 S5]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('dealer')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('dealer')
     end
     it "lets sam win if it's d7:s21 in the first round" do
       deck = %w[D10 D4 HA S3 C7 S4]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('sam')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('sam')
     end
     it "lets sam win if it's d21:s21 in the first round" do
       deck = %w[DA HA CK SK S5 D3]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('sam')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('sam')
     end
     it "lets sam win if it's d22:s20" do
       deck = %w[H5 H9 SA C5 S4 S8]
       game = Blackjack::Game.new
-      expect(game.play(deck)).to eq('sam')
+      sam = Blackjack::Player.new('sam')
+      dealer = Blackjack::Player.new('dealer')
+      expect(game.play(sam, dealer, deck)).to eq('sam')
     end
   end
 end
