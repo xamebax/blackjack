@@ -32,4 +32,4 @@ You can omit the name of the file containing the shuffled deck. If you do, the p
 
 **Linting** is done via Rubocop. To run the linter, execute `bundle exec rubocop .` in the project directory (make sure you ran `bundle install` first).
 
-**Unit tests** are in `tests/blackjack_spec.rb`. To run them, execute the following command in the project's directory: `rspec tests/blackjack_spec.rb`.
+**Unit tests** are in `tests/`. To run them, execute the following command in the project's directory: `bundle exec rspec tests`.
