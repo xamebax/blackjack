@@ -1,5 +1,8 @@
-# require 'test/unit'
-require './blackjack'
+# Insert the `lib/` subdirectory in front of the require path
+lib = File.join(File.dirname(__FILE__), 'lib')
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'blackjack/game'
 
 RSpec.describe Blackjack::Game do
   describe '#generate_deck' do

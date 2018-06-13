@@ -1,16 +1,7 @@
+require './lib/blackjack/player'
+
 # Blackjack separates the game into two classes: Game and Player.
 module Blackjack
-  # Player class enables creating new players and storing data on them
-  class Player
-    attr_accessor :name, :cards, :score
-
-    def initialize(name)
-      @name = name
-      @cards = []
-      @score = 0
-    end
-  end
-
   # Game contains all the game and card logic.
   class Game
     DECK = { suits: %w[C S D H],
@@ -140,9 +131,3 @@ module Blackjack
     end
   end
 end
-
-# The actual game is played here.
-# TODO: Move to separate file?
-game = Blackjack::Game.new
-deck = game.load_deck(ARGV[0])
-game.print_outcome(deck)
