@@ -134,9 +134,9 @@ module Blackjack
     # TODO: play should be called separately and its returned value stored
     # in a variable that's later referenced here
     def print_outcome(deck)
-      pp play(deck).to_s
-      pp "sam: #{@sam.cards.join(', ')}"
-      pp "dealer: #{@dealer.cards.join(', ')}"
+      puts play(deck).to_s
+      puts "sam: #{@sam.cards.join(', ')}"
+      puts "dealer: #{@dealer.cards.join(', ')}"
     end
   end
 end
