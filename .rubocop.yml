@@ -1,0 +1,16 @@
+# Rspec is a DSL and the length of the test bloc does not lower overal
+# code quality, hence the exclusion.
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Metrics/AbcSize:
+  Max: 27
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/PerceivedComplexity:
+  Max: 8
