@@ -25,15 +25,12 @@ module Blackjack
     end
 
     # load_deck takes an optional path to file and returns an Array of strings.
-    # TODO: if a file doesn't exist, an error should be raised.
     def load_deck(path = nil)
-      if path.nil? || !File.file?(path)
-        generate_deck
-      else
-        deck = File.read(path).split(', ')
-        deck.last.strip!
-        deck
-      end
+      return generate_deck if path.nil?
+      raise "the card file doesn't exist" if !File.file?(path)
+      deck = File.read(path).split(', ')
+      deck.last.strip!
+      deck
     end
 
     # card_value takes a string and returns an integer
@@ -79,7 +76,7 @@ module Blackjack
       dealer_plays(deck)
     end
 
-    # early_winner determins a winner after the first round of cards.
+    # early_winner determines a winner after the first round of cards.
     def early_winner
       case @sam.score
       when 21 # Sam wins regardless if the dealer has 21.

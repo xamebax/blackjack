@@ -16,7 +16,7 @@ RSpec.describe Blackjack::Game do
   describe '#load_deck' do
     it 'loads a file with a deck of cards' do
       game = Blackjack::Game.new
-      deck = game.load_deck('test_deck')
+      deck = game.load_deck('fixtures/test_deck')
       expect(deck).to_not be_nil
       expect(deck.length).to eq(52)
     end
@@ -25,6 +25,10 @@ RSpec.describe Blackjack::Game do
       deck = game.load_deck
       expect(deck).to_not be_nil
       expect(deck.length).to eq(52)
+    end
+    it "raises error if the card file doesn't exist" do
+      game = Blackjack::Game.new
+      expect { game.load_deck('fixtures/no_deck') }.to raise_error(RuntimeError)
     end
   end
 
